@@ -44,6 +44,8 @@ class Spiders::Instagram
 
     @browser.a(text: "Load more").click
 
+    start_time = Time.now
+
     while articles_count < max_articles
       begin
         @browser.scroll.to :bottom
@@ -53,7 +55,7 @@ class Spiders::Instagram
       end
 
       articles_count = @browser.articles.count
-      echo_output("Grabbed #{articles_count} articles", 1)
+      echo_output("Grabbed #{articles_count} articles", 1, -1, start_time)
     end
 
     @browser.scroll.to :top
@@ -73,6 +75,8 @@ class Spiders::Instagram
         size = Constants::DEFAULT_GRABBING_NUMBER
       )
     following_urls = read_following_urls_from_file.first(max_followings)[offset, size]
+
+    return unless following_urls
 
     following_urls.each {|following_url|
       profile_screen_name = following_url.sub(/https:\/\/www.instagram.com\//, '').sub(/\//, '')
