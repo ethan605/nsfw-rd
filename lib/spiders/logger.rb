@@ -1,4 +1,4 @@
-class Spiders::SpiderLogger
+class Spiders::Logger
   attr_accessor :log
 
   def initialize(file_name = "#{Rails.root}/log/spiders/spider.log")

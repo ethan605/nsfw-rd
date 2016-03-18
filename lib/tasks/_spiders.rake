@@ -20,7 +20,7 @@ def process_by_args
 
   spider_threads = []
   mutex = Mutex.new
-  logger = SpiderLogger.new("instagram_spider.log")
+  logger = Spider::Logger.new("instagram_spider.log")
 
   concurrent_spiders.times {|index|
     spider_thread = Thread.new {
