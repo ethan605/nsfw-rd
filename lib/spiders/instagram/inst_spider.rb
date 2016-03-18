@@ -132,6 +132,10 @@ class Spiders::Instagram::InstSpider
     end
   end
 
+  def end
+    @browser.close
+  end
+
   private
   def hex_address
     "0x00%x" % (object_id * 2)
