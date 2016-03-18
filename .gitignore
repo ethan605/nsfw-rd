@@ -33,3 +33,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Spiders secrets
+/config/spiders_secrets.yml

@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 # For debugging
 # gem 'irbtools', '~> 2.0', '>= 2.0.1'
 gem 'pry', '~> 0.10.3'
+gem 'pry-rails', '~> 0.3.4'
 
 # For spiders
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
