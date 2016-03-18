@@ -18,6 +18,7 @@ gem 'pry-rails', '~> 0.3.4'
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
 gem 'watir', '~> 5.0'
 gem 'watir-scroll', '~> 0.1.0'
+# gem 'net-http-batch', :git => 'git@github.com:raggi/net-http-batch.git'
 
 group :development, :test do
   gem 'minitest', '~> 5.8', '>= 5.8.4'

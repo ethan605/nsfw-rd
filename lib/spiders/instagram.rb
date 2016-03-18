@@ -80,17 +80,14 @@ class Spiders::Instagram
 
     following_urls.each {|following_url|
       profile_screen_name = following_url.sub(/https:\/\/www.instagram.com\//, '').sub(/\//, '')
-      posts_count = check_following_all_images_changed(profile_screen_name)
+      posts_count = get_following_posts_count(profile_screen_name)
+      existed_profile = read_following_all_images_from_file(profile_screen_name)
 
-      if posts_count == 0
-        echo_output("Nothing new with #{profile_screen_name}, move on!")
-      else
-        grab_one_following_images(following_url, posts_count)
-      end
+      grab_one_following_images(following_url, posts_count, existed_profile)
     }
   end
 
-  def grab_one_following_images(following_url, posts_count)
+  def grab_one_following_images(following_url, posts_count, existed_profile)
     @browser.goto(following_url)
 
     profile = {
@@ -110,6 +107,11 @@ class Spiders::Instagram
     )
 
     while @browser.a(:text => "Load more").present?
+      if ((existed_profile["images"] || []) & profile[:images]).count > 0
+        echo_output("Nothing new with #{profile[:screen_name]}, move on!", 1)
+        break
+      end
+
       start_time = Time.now
 
       next_page = @browser.a(:text => "Load more").href
@@ -124,6 +126,7 @@ class Spiders::Instagram
       )
     end
 
+    profile[:images] |= existed_profile["images"]
     profile[:images].uniq!
 
     if @write_mutex
@@ -169,18 +172,11 @@ class Spiders::Instagram
     File.read(file_name).split("\n")
   end
 
-  def check_following_all_images_changed(profile_screen_name)
-    profile = read_following_all_images_from_file(profile_screen_name)
-    
+  def get_following_posts_count(profile_screen_name)
     @browser.goto(Constants::DEFAULT_GATEWAY + "/" + profile_screen_name)
     posts_count_label = @browser.elements(css: "article header div ul li > span").first
-    posts_count = posts_count_label.present? ? posts_count_label.text.sub(/\s+|,|post(s)*/, '').to_i : 0
     
-    if (profile["images"] || []).count != posts_count
-      posts_count
-    else
-      0
-    end
+    posts_count_label.present? ? posts_count_label.text.sub(/\s+|,|post(s)*/, '').to_i : 0
   end
 
   def write_following_all_images_to_file(profile)
