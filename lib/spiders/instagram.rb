@@ -35,7 +35,7 @@ class Spiders::Instagram
     puts indent + self_address + completion_rate + message + benchmark
   end
 
-  def grab_followings(max_articles = Constants::DEFAULT_GRABBING_NUMBER)
+  def grab_followings(max_articles = Constants::DEFAULT_GRAB_LIMIT)
     echo_output("Grabbing news feed articles")
 
     @browser.goto Constants::DEFAULT_GATEWAY
@@ -70,9 +70,9 @@ class Spiders::Instagram
   end
 
   def grab_followings_all_images(
-        max_followings = Constants::DEFAULT_GRABBING_NUMBER,
+        max_followings = Constants::DEFAULT_GRAB_LIMIT,
         offset = 0,
-        size = Constants::DEFAULT_GRABBING_NUMBER
+        size = Constants::DEFAULT_GRAB_LIMIT
       )
     following_urls = read_following_urls_from_file.first(max_followings)[offset, size]
 
@@ -85,12 +85,12 @@ class Spiders::Instagram
       if posts_count == 0
         echo_output("Nothing new with #{profile_screen_name}, move on!")
       else
-        grab_following_all_images(following_url, posts_count)
+        grab_one_following_images(following_url, posts_count)
       end
     }
   end
 
-  def grab_following_all_images(following_url, posts_count)
+  def grab_one_following_images(following_url, posts_count)
     @browser.goto(following_url)
 
     profile = {

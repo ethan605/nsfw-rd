@@ -2,19 +2,19 @@ require 'thwait'
 
 namespace :spiders do
   namespace :instagram do
-    def preprocess_args(grabbing_number_key, concurrent_spiders_key)
-      grabbing_number = ENV[grabbing_number_key].present? ? ENV[grabbing_number_key].to_i : 1
-      grabbing_number = 1 if grabbing_number <= 0
-      grabbing_number = Constants::MAX_GRABBING_NUMBER if grabbing_number > Constants::MAX_GRABBING_NUMBER
+    def preprocess_args(grab_limit_key, concurrent_spiders_key)
+      grab_limit = ENV[grab_limit_key].present? ? ENV[grab_limit_key].to_i : 1
+      grab_limit = Constants::DEFAULT_GRAB_LIMIT if grab_limit <= 0
+      grab_limit = Constants::MAX_GRAB_LIMIT if grab_limit > Constants::MAX_GRAB_LIMIT
 
       concurrent_spiders = ENV[concurrent_spiders_key].present? ? ENV[concurrent_spiders_key].to_i : 1
-      concurrent_spiders = 1 if concurrent_spiders <= 0
-      concurrent_spiders = Constants::MAX_CONCURRENT_SPIDER if concurrent_spiders > Constants::MAX_CONCURRENT_SPIDER
+      concurrent_spiders = Constants::DEFAULT_CONCURRENT_SPIDERS if concurrent_spiders <= 0
+      concurrent_spiders = Constants::MAX_CONCURRENT_SPIDERS if concurrent_spiders > Constants::MAX_CONCURRENT_SPIDERS
 
-      [grabbing_number, concurrent_spiders]      
+      [grab_limit, concurrent_spiders]      
     end
 
-    def parallel_grabbing(grabbing_number, concurrent_spiders)
+    def parallel_grabbing(grab_limit, concurrent_spiders)
       spider_threads = []
       mutex = Mutex.new
       logger = Spiders::Logger.new(Constants::LOG_FILE)
@@ -45,22 +45,22 @@ namespace :spiders do
     task :grab_followings => :environment do
       Constants = Spiders::Instagram::Constants
 
-      grabbing_number, concurrent_spiders = preprocess_args("articles", "concurrent")
-      parallel_grabbing(grabbing_number, concurrent_spiders) do |spider, index|
-        spider.grab_followings(grabbing_number)
+      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
+      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
+        spider.grab_followings(grab_limit)
       end
     end
 
     task :grab_followings_all_images => :environment do
       Constants = Spiders::Instagram::Constants
 
-      grabbing_number, concurrent_spiders = preprocess_args("followings", "concurrent")
-      concurrent_trunk_size = grabbing_number / concurrent_spiders +
-                              (grabbing_number % concurrent_spiders == 0 ? 0 : 1)
+      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
+      concurrent_trunk_size = grab_limit / concurrent_spiders +
+                              (grab_limit % concurrent_spiders == 0 ? 0 : 1)
 
-      parallel_grabbing(grabbing_number, concurrent_spiders) do |spider, index|
+      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
         spider.grab_followings_all_images(
-          grabbing_number,
+          grab_limit,
           index * concurrent_trunk_size,
           concurrent_trunk_size
         )
