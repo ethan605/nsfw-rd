@@ -4,6 +4,8 @@ class Spiders::Logger
   def initialize(file_name = "#{Rails.root}/log/spiders/spider.log")
     @log = {}
     @file_name = file_name
+
+    Dir.mkdir("#{Rails.root}/log/spiders/") unless Dir.exists?("#{Rails.root}/log/spiders/")
   end
 
   def append_log(unique_id, message)

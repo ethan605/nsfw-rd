@@ -1,18 +1,15 @@
-InstConstants = Spiders::Constants::Instagram
-InstConfig = Spiders::Instagram::InstConfig
-
-class Spiders::Instagram::InstSpider
+class Spiders::Instagram
   attr_accessor :browser
   attr_accessor :write_mutex
   attr_accessor :logger
 
   def initialize(write_mutex = nil, logger = nil)
-    @browser = Watir::Browser.start InstConstants::LOGIN_GATEWAY
+    @browser = Watir::Browser.start Constants::LOGIN_GATEWAY
     @write_mutex = write_mutex
     @logger = logger
 
-    @browser.text_field(:name => "username").when_present.set(InstConfig.instance.username)
-    @browser.text_field(:name => "password").when_present.set(InstConfig.instance.password)
+    @browser.text_field(:name => "username").when_present.set(Config.instance.username)
+    @browser.text_field(:name => "password").when_present.set(Config.instance.password)
     @browser.button(:text => "Log in").when_present.click
 
     Watir::Wait.until { @browser.title == "Instagram" }
@@ -38,10 +35,10 @@ class Spiders::Instagram::InstSpider
     puts indent + self_address + completion_rate + message + benchmark
   end
 
-  def grab_followings(max_articles = InstConstants::DEFAULT_GRABBING_NUMBER)
+  def grab_followings(max_articles = Constants::DEFAULT_GRABBING_NUMBER)
     echo_output("Grabbing news feed articles")
 
-    @browser.goto InstConstants::DEFAULT_GATEWAY
+    @browser.goto Constants::DEFAULT_GATEWAY
     articles_count = @browser.articles.count
     echo_output("Grabbed #{articles_count} articles", 1)
 
@@ -71,9 +68,9 @@ class Spiders::Instagram::InstSpider
   end
 
   def grab_followings_all_images(
-        max_followings = InstConstants::DEFAULT_GRABBING_NUMBER,
+        max_followings = Constants::DEFAULT_GRABBING_NUMBER,
         offset = 0,
-        size = InstConstants::DEFAULT_GRABBING_NUMBER
+        size = Constants::DEFAULT_GRABBING_NUMBER
       )
     following_urls = read_following_urls_from_file.first(max_followings)[offset, size]
 
@@ -132,7 +129,7 @@ class Spiders::Instagram::InstSpider
     end
   end
 
-  def end
+  def finalize
     @browser.close
   end
 
@@ -148,13 +145,13 @@ class Spiders::Instagram::InstSpider
   end
 
   def prepare_data_folder
-    Dir.mkdir(InstConstants::FOLDER_NAME) unless Dir.exists?(InstConstants::FOLDER_NAME)
+    Dir.mkdir(Constants::FOLDER_NAME) unless Dir.exists?(Constants::FOLDER_NAME)
   end
 
   def write_following_urls_to_file(following_urls)
     prepare_data_folder
 
-    file_name = InstConstants::FOLLOWINGS_FILE_NAME
+    file_name = Constants::FOLLOWINGS_FILE_NAME
     File.write(file_name, "") unless File.exists?(file_name)
     
     following_urls |= File.read(file_name).split("\n")
@@ -162,7 +159,7 @@ class Spiders::Instagram::InstSpider
   end
 
   def read_following_urls_from_file
-    file_name = InstConstants::FOLLOWINGS_FILE_NAME
+    file_name = Constants::FOLLOWINGS_FILE_NAME
     return [] unless File.exists?(file_name)
 
     File.read(file_name).split("\n")
@@ -171,7 +168,7 @@ class Spiders::Instagram::InstSpider
   def check_following_all_images_changed(profile_screen_name)
     profile = read_following_all_images_from_file(profile_screen_name)
     
-    @browser.goto(InstConstants::DEFAULT_GATEWAY + "/" + profile_screen_name)
+    @browser.goto(Constants::DEFAULT_GATEWAY + "/" + profile_screen_name)
     posts_count_label = @browser.elements(css: "article header div ul li > span").first
     posts_count = posts_count_label.present? ? posts_count_label.text.sub(/\s+|,|post(s)*/, '').to_i : 0
     
@@ -184,13 +181,13 @@ class Spiders::Instagram::InstSpider
 
   def write_following_all_images_to_file(profile)
     prepare_data_folder
-    file_name = InstConstants::FOLDER_NAME + "#{profile[:screen_name]}-images.json"
+    file_name = Constants::FOLDER_NAME + "#{profile[:screen_name]}-images.json"
 
     File.write(file_name, JSON.pretty_generate(profile))
   end
 
   def read_following_all_images_from_file(profile_screen_name)
-    file_name = InstConstants::FOLDER_NAME + "#{profile_screen_name}-images.json"
+    file_name = Constants::FOLDER_NAME + "#{profile_screen_name}-images.json"
     return {} unless File.exists?(file_name)
 
     JSON.parse(File.read(file_name))

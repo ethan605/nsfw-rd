@@ -1,4 +1,4 @@
-class Spiders::Instagram::InstConfig
+class Spiders::Instagram::Config
   include Singleton
 
   attr_accessor :client_id
