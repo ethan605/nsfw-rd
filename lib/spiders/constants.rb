@@ -4,8 +4,8 @@ module Spiders::Constants
     LOGIN_GATEWAY = "https://www.instagram.com/accounts/login/"
 
     FOLDER_NAME = Rails.root + "db/spiders/instagram/"
-    # FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.txt"
-    FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.test.txt"
+    FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.txt"
+    # FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.test.txt"
 
     DEFAULT_GRABBING_NUMBER = 100
     MAX_GRABBING_NUMBER = 1000
