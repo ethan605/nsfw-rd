@@ -18,22 +18,16 @@ class Spiders::Instagram
 
   def echo_output(message, indent_level = 0, completion_rate = -1, benchmark_start_time = -1)
     self_address = "[#{hex_address}] "
-    indent = "\s\s" * indent_level
+    indent = "\s" * 2 * indent_level
 
-    completion_rate = if completion_rate > 0
-      "[%02d%%] " % (completion_rate * 100)
-    else
-      ""
-    end
+    completion_rate_str = ""
+    completion_rate_str = "[%2d%%] " % (completion_rate * 100) if completion_rate > 0
 
-    benchmark = if benchmark_start_time.to_i > 0
-      " [%.2fms]" % ((Time.now - benchmark_start_time) * 1000)
-    else
-      ""
-    end
+    benchmark_str = ""
+    benchmark_str = " [%.2fms]" % ((Time.now - benchmark_start_time) * 1000) if benchmark_start_time.to_i > 0
 
-    @logger.append_log(hex_address, completion_rate + message + benchmark) if @logger
-    puts indent + self_address + completion_rate + message + benchmark
+    @logger.append_log(hex_address, completion_rate_str + message + benchmark_str) if @logger
+    puts indent + self_address + completion_rate_str + message + benchmark_str
   end
 
   def grab_followings(max_articles = Constants::DEFAULT_GRAB_LIMIT)
@@ -82,8 +76,7 @@ class Spiders::Instagram
     following_urls.each {|following_url|
       profile_screen_name = following_url.sub(/https:\/\/www.instagram.com\//, '').sub(/\//, '')
       posts_count = get_following_posts_count(profile_screen_name)
-      existed_profile = Profile.new(profile_screen_name)
-      # existed_profile = read_following_all_images_from_file(profile_screen_name)
+      existed_profile = Profile.new(screen_name: profile_screen_name)
 
       grab_one_following_images(following_url, posts_count, existed_profile)
     }
@@ -180,18 +173,4 @@ class Spiders::Instagram
     
     posts_count_label.present? ? posts_count_label.text.sub(/\s+|,|post(s)*/, '').to_i : 0
   end
-
-  # def write_following_all_images_to_file(profile)
-  #   prepare_data_folder
-  #   file_name = Constants::FOLDER_NAME + "#{profile[:screen_name]}-images.json"
-
-  #   File.write(file_name, JSON.pretty_generate(profile))
-  # end
-
-  # def read_following_all_images_from_file(profile_screen_name)
-  #   file_name = Constants::FOLDER_NAME + "#{profile_screen_name}-images.json"
-  #   return {} unless File.exists?(file_name)
-
-  #   JSON.parse(File.read(file_name))
-  # end
 end

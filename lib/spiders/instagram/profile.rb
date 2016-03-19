@@ -14,6 +14,7 @@ class Spiders::Instagram::Profile
       display_name: "",
       images: []
     }
+    
     profile = args[:hash_profile] if args[:hash_profile] && args[:hash_profile].is_a?(Hash)
 
     if args[:screen_name] || args[:file_name]
@@ -28,11 +29,14 @@ class Spiders::Instagram::Profile
 
     profile.each {|key, value| send(key.to_s + "=", value)}
 
-    @is_empty = @source_url.empty? || @screen_name.empty || @images.empty?
+    @is_empty = @source_url.empty? || @screen_name.empty? || @images.empty?
   end
 
   def save_to_file(file_name = nil)
-    file_name = Spiders::Instagram::Constants::FOLDER_NAME + "#{self.screen_name}-images.test.json" unless file_name
-    File.write(file_name, JSON.pretty_generate(self.as_json))
+    file_name = Spiders::Instagram::Constants::FOLDER_NAME + "#{self.screen_name}-images.json" unless file_name
+
+    json_hash = self.as_json
+    json_hash.delete["is_empty"]
+    File.write(file_name, JSON.pretty_generate(json_hash))
   end
 end

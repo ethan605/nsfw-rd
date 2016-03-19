@@ -3,8 +3,8 @@ module Spiders::Instagram::Constants
   LOGIN_GATEWAY = "https://www.instagram.com/accounts/login/"
 
   FOLDER_NAME = Rails.root + "db/spiders/instagram/"
-  FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.txt"
-  # FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.test.txt"
+  # FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.txt"
+  FOLLOWINGS_FILE_NAME = FOLDER_NAME + "---following_urls---.test.txt"
 
   LOG_FILE = Rails.root + "log/spiders/instagram.log"
 
