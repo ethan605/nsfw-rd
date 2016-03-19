@@ -4,9 +4,16 @@ class Spiders::Instagram::Profile
   attr_accessor :screen_name
   attr_accessor :display_name
   attr_accessor :images
+  attr_reader :is_empty
 
   def initialize(args = {})
-    profile = nil
+    profile = {             # default profile
+      source: "",
+      source_url: "",
+      screen_name: "",
+      display_name: "",
+      images: []
+    }
     profile = args[:hash_profile] if args[:hash_profile] && args[:hash_profile].is_a?(Hash)
 
     if args[:screen_name] || args[:file_name]
@@ -20,6 +27,8 @@ class Spiders::Instagram::Profile
     end
 
     profile.each {|key, value| send(key.to_s + "=", value)}
+
+    @is_empty = @source_url.empty? || @screen_name.empty || @images.empty?
   end
 
   def save_to_file(file_name = nil)

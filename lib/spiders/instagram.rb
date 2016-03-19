@@ -1,5 +1,6 @@
 class Spiders::Instagram
-  attr_accessor :browser
+  attr_reader :browser
+  attr_reader :current_profile
   attr_accessor :write_mutex
   attr_accessor :logger
 
@@ -81,7 +82,8 @@ class Spiders::Instagram
     following_urls.each {|following_url|
       profile_screen_name = following_url.sub(/https:\/\/www.instagram.com\//, '').sub(/\//, '')
       posts_count = get_following_posts_count(profile_screen_name)
-      existed_profile = read_following_all_images_from_file(profile_screen_name)
+      existed_profile = Profile.new(profile_screen_name)
+      # existed_profile = read_following_all_images_from_file(profile_screen_name)
 
       grab_one_following_images(following_url, posts_count, existed_profile)
     }
@@ -90,25 +92,25 @@ class Spiders::Instagram
   def grab_one_following_images(following_url, posts_count, existed_profile)
     @browser.goto(following_url)
 
-    profile = {
+    profile = Profile.new(hash_profile: {
       source: "instagram",
       source_url: "https://www.instagram.com",
       screen_name: @browser.h1.present? ? @browser.h1.text : "<blank>",
       display_name: @browser.h2.present? ? @browser.h2.text : "<blank>",
       images: normalize_images_urls(@browser.images)
-    }
+    })
 
     puts "\n"
-    echo_output("Grabbing #{posts_count} images for #{profile[:screen_name]}")
+    echo_output("Grabbing #{posts_count} images for #{profile.screen_name}")
     echo_output(
-      "[#{profile[:screen_name]}] Grabbed #{profile[:images].count} images",
+      "[#{profile.screen_name}] Grabbed #{profile.images.count} images",
       1,
-      profile[:images].count.to_f / posts_count
+      profile.images.count.to_f / posts_count
     )
 
     while @browser.a(:text => "Load more").present?
-      if ((existed_profile["images"] || []) & profile[:images]).count > 0
-        echo_output("Nothing new with #{profile[:screen_name]}, move on!", 1)
+      if (existed_profile.images & profile.images).count > 0
+        echo_output("Nothing new with #{profile.screen_name}, move on!", 1)
         break
       end
 
@@ -116,23 +118,23 @@ class Spiders::Instagram
 
       next_page = @browser.a(:text => "Load more").href
       @browser.goto(next_page)
-      profile[:images] |= normalize_images_urls(@browser.images)
+      profile.images |= normalize_images_urls(@browser.images)
 
-      grabbed_count = profile[:images].count
+      grabbed_count = profile.images.count
       echo_output(
-        "[#{profile[:screen_name]}] Grabbed #{grabbed_count} images",
+        "[#{profile.screen_name}] Grabbed #{grabbed_count} images",
         1,
         grabbed_count.to_f / posts_count, start_time
       )
     end
 
-    profile[:images] |= existed_profile["images"]
-    profile[:images].uniq!
+    profile.images |= existed_profile.images
+    profile.images.uniq!
 
     if @write_mutex
-      @write_mutex.synchronize { write_following_all_images_to_file(profile) }
+      @write_mutex.synchronize { profile.save_to_file }
     else
-      write_following_all_images_to_file(profile)
+      profile.save_to_file
     end
   end
 
@@ -179,17 +181,17 @@ class Spiders::Instagram
     posts_count_label.present? ? posts_count_label.text.sub(/\s+|,|post(s)*/, '').to_i : 0
   end
 
-  def write_following_all_images_to_file(profile)
-    prepare_data_folder
-    file_name = Constants::FOLDER_NAME + "#{profile[:screen_name]}-images.json"
+  # def write_following_all_images_to_file(profile)
+  #   prepare_data_folder
+  #   file_name = Constants::FOLDER_NAME + "#{profile[:screen_name]}-images.json"
 
-    File.write(file_name, JSON.pretty_generate(profile))
-  end
+  #   File.write(file_name, JSON.pretty_generate(profile))
+  # end
 
-  def read_following_all_images_from_file(profile_screen_name)
-    file_name = Constants::FOLDER_NAME + "#{profile_screen_name}-images.json"
-    return {} unless File.exists?(file_name)
+  # def read_following_all_images_from_file(profile_screen_name)
+  #   file_name = Constants::FOLDER_NAME + "#{profile_screen_name}-images.json"
+  #   return {} unless File.exists?(file_name)
 
-    JSON.parse(File.read(file_name))
-  end
+  #   JSON.parse(File.read(file_name))
+  # end
 end
