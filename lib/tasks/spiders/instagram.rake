@@ -2,6 +2,42 @@ require 'thwait'
 
 namespace :spiders do
   namespace :instagram do
+    task :test => :environment do
+    end
+
+    task :grab_followings => :environment do
+      Constants = Spiders::Instagram::Constants
+
+      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
+      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
+        spider.grab_followings(grab_limit)
+      end
+    end
+
+    task :grab_followings_all_images => :environment do
+      Constants = Spiders::Instagram::Constants
+
+      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
+      concurrent_trunk_size = grab_limit / concurrent_spiders +
+                              (grab_limit % concurrent_spiders == 0 ? 0 : 1)
+
+      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
+        spider.grab_followings_all_images(
+          grab_limit,
+          index * concurrent_trunk_size,
+          concurrent_trunk_size
+        )
+      end
+    end
+
+    task :clean_up_all_followings_images => :environment do
+      Constants = Spiders::Instagram::Constants
+
+      Dir[Constants::FOLDER_NAME + "*.json"].each {|json_file|
+        clean_up_following_images_file(json_file)
+      }
+    end
+
     def preprocess_args(grab_limit_key, concurrent_spiders_key)
       grab_limit = ENV[grab_limit_key].present? ? ENV[grab_limit_key].to_i : 1
       grab_limit = Constants::DEFAULT_GRAB_LIMIT if grab_limit <= 0
@@ -39,32 +75,7 @@ namespace :spiders do
       logger.write_file
     end
 
-    task :test => :environment do
-    end
-
-    task :grab_followings => :environment do
-      Constants = Spiders::Instagram::Constants
-
-      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
-      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
-        spider.grab_followings(grab_limit)
-      end
-    end
-
-    task :grab_followings_all_images => :environment do
-      Constants = Spiders::Instagram::Constants
-
-      grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
-      concurrent_trunk_size = grab_limit / concurrent_spiders +
-                              (grab_limit % concurrent_spiders == 0 ? 0 : 1)
-
-      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
-        spider.grab_followings_all_images(
-          grab_limit,
-          index * concurrent_trunk_size,
-          concurrent_trunk_size
-        )
-      end
+    def clean_up_following_images_file(json_file)
     end
   end
 end
