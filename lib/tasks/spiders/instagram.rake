@@ -1,6 +1,17 @@
 namespace :spiders do
   namespace :instagram do
     task :test => :environment do
+      puts (ENV["a"] || "not_found") + " " + (ENV["b"] || "not_found")
+    end
+
+    task :process_all => :environment do
+      ENV["limit"] = "13"
+      ENV["concurrent"] = "1"
+      Rake::Task['spiders:instagram:grab_followings'].invoke
+
+      ENV["limit"] = "2"
+      ENV["concurrent"] = "2"
+      Rake::Task['spiders:instagram:grab_followings_all_images'].invoke
     end
 
     task :grab_followings => :environment do
