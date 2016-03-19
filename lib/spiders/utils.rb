@@ -1,36 +1,63 @@
 module Spiders
   class Utils
-    def self.check_alive_image_url(image_url)
+    def self.check_alive_image_url(image_url, mechanize_agent = nil, benchmark = false)
       image_uri = URI(image_url)
-      request = Net::HTTP.new image_uri.host
-      response = request.request_head image_uri.path
-      response.is_a?(Net::HTTPSuccess)
+
+      unless image_uri.is_a?(URI::HTTP) # malformed URI
+        puts "MALFORMED => " + image_url
+        return false
+      end
+
+      start_time = Time.now if benchmark
+
+      unless mechanize_agent
+        mechanize_agent = Mechanize.new
+        mechanize_agent.user_agent_alias = 'Mac Firefox'
+      end
+
+      check_result = begin
+        response = mechanize_agent.head(image_uri)
+        response.is_a?(Mechanize::Image)
+      rescue Mechanize::ResponseCodeError => e
+        begin
+          response = mechanize_agent.get(image_uri)
+          response.is_a?(Mechanize::Image)
+        rescue Mechanize::ResponseCodeError => e
+          false
+        end
+      end
+
+      benchmark_str = if benchmark
+        "[%.3fs] " % (Time.now - start_time)
+      else
+        ""
+      end
+
+      puts benchmark_str + (check_result ? " OK => " : "BAD => ") + image_url
+      check_result
     end
 
     def self.spot_bad_image_urls(image_urls)
-      image_uri_hash = {}
-      
-      image_urls.each {|url|
-        uri = URI(url)
-        image_uri_hash[uri.scheme] ||= {}
-        image_uri_hash[uri.scheme][uri.host] ||= []
-        image_uri_hash[uri.scheme][uri.host] << uri.path
+      agent = Mechanize.new
+      agent.user_agent_alias = 'Mac Firefox'
+      image_urls.select { |image_url| !check_alive_image_url(image_url, nil, true) }
+    end
+
+    def self.parallel_processing(concurrent_threads, log_file)
+      threads = []
+      mutex = Mutex.new
+      logger = Spiders::Logger.new(log_file)
+
+      concurrent_threads.times {|index|
+        thread = Thread.new { yield(index, mutex, logger) }
+        puts "[*] Created new thread #{thread}\n"
+        threads << thread
       }
 
-      bad_urls = []
+      threads.each(&:join)          # join all threads to main thread for exceptions handling
+      ThreadsWait.all_waits(*threads) { |thread| puts "[*] Thread #{thread} done\n" }
 
-      image_uri_hash.each {|scheme, bodies|
-        bodies.each {|host, paths|
-          request = Net::HTTP.new host
-          paths.each {|path|
-            response = request.request_head path
-            bad_urls << scheme + "://" + host + path unless response.code.to_i == 200
-            puts (response.code.to_i == 200 ? " OK => " : "BAD => ") + host + path
-          }
-        }
-      }
-
-      bad_urls
+      logger.write_file
     end
   end
 end

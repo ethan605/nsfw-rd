@@ -1,5 +1,3 @@
-require 'thwait'
-
 class Spiders::Instagram::Profile
   attr_accessor :source
   attr_accessor :source_url
@@ -47,25 +45,12 @@ class Spiders::Instagram::Profile
   end
 
   def spot_bad_images(concurrent_threads = 3)
-    threads = []
     alive_urls = (self.images + self.bad_images).dup
     final_bad_urls = alive_urls.dup
-    mutex = Mutex.new
-
-    concurrent_threads.times {|index|
-      thread = Thread.new {
-        bad_urls = Spiders::Utils.spot_bad_image_urls(alive_urls.shuffle)
-        mutex.synchronize { final_bad_urls &= bad_urls }
-      }
-
-      puts "[*] Create new thread #{thread}\n"
-      threads << thread
-    }
-
-    threads.each(&:join)
-
-    ThreadsWait.all_waits(*threads) do |thread|
-      puts "[*] Thread #{thread} done!"
+    
+    Spiders::Utils.parallel_processing(concurrent_threads, Constants::LOG_FILE) do |index, mutex, logger|
+      bad_urls = Spiders::Utils.spot_bad_image_urls(alive_urls.shuffle)
+      mutex.synchronize { final_bad_urls &= bad_urls }
     end
 
     self.bad_images = final_bad_urls

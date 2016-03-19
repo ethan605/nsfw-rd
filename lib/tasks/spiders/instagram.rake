@@ -1,5 +1,3 @@
-require 'thwait'
-
 namespace :spiders do
   namespace :instagram do
     task :test => :environment do
@@ -9,8 +7,10 @@ namespace :spiders do
       Constants = Spiders::Instagram::Constants
 
       grab_limit, concurrent_spiders = preprocess_args("limit", "concurrent")
-      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
+      Spiders::Utils.parallel_processing(concurrent_spiders, Constants::LOG_FILE) do |index, mutex, logger|
+        spider = Spiders::Instagram.new(mutex, logger)
         spider.grab_followings(grab_limit)
+        spider.finalize
       end
     end
 
@@ -21,21 +21,44 @@ namespace :spiders do
       concurrent_trunk_size = grab_limit / concurrent_spiders +
                               (grab_limit % concurrent_spiders == 0 ? 0 : 1)
 
-      parallel_grabbing(grab_limit, concurrent_spiders) do |spider, index|
+      Spiders::Utils.parallel_processing(concurrent_spiders, Constants::LOG_FILE) do |index, mutex, logger|
+        spider = Spiders::Instagram.new(mutex, logger)
         spider.grab_followings_all_images(
           grab_limit,
           index * concurrent_trunk_size,
           concurrent_trunk_size
         )
+        spider.finalize
       end
     end
 
     task :clean_up_all_followings_images => :environment do
       Constants = Spiders::Instagram::Constants
+      Profile = Spiders::Instagram::Profile
 
-      Dir[Constants::FOLDER_NAME + "*.json"].each {|json_file|
-        clean_up_following_images_file(json_file)
-      }
+      grab_limit, concurrent_threads = preprocess_args("limit", "concurrent")
+      concurrent_trunk_size = grab_limit / concurrent_threads +
+                              (grab_limit % concurrent_threads == 0 ? 0 : 1)
+
+      following_urls = File.read(Constants::FOLLOWINGS_FILE_NAME).split("\n")
+
+      bad_images = {}
+
+      Spiders::Utils.parallel_processing(concurrent_threads, Constants::LOG_FILE) do |index, mutex, logger|
+        trunked_followings = following_urls[index * concurrent_trunk_size, concurrent_trunk_size] || []
+
+        trunked_followings.each {|following_url|
+          profile_screen_name = following_url.sub(/https:\/\/www.instagram.com\//, '').sub(/\//, '')
+          profile = Profile.new(screen_name: profile_screen_name)
+          profile.spot_bad_images(concurrent_threads)
+
+          mutex.synchronize { bad_images[profile.screen_name] = profile.bad_images }
+        }
+      end
+
+      bad_images.delete_if {|screen_name, images| images.empty?}
+      file_name = Constants::FOLDER_NAME + "---bad_images---.json"
+      File.write(file_name, JSON.pretty_generate(bad_images))
     end
 
     def preprocess_args(grab_limit_key, concurrent_spiders_key)
@@ -48,35 +71,6 @@ namespace :spiders do
       concurrent_spiders = Constants::MAX_CONCURRENT_SPIDERS if concurrent_spiders > Constants::MAX_CONCURRENT_SPIDERS
 
       [grab_limit, concurrent_spiders]      
-    end
-
-    def parallel_grabbing(grab_limit, concurrent_spiders)
-      spider_threads = []
-      mutex = Mutex.new
-      logger = Spiders::Logger.new(Constants::LOG_FILE)
-
-      concurrent_spiders.times {|index|
-        spider_thread = Thread.new {
-          spider = Spiders::Instagram.new(mutex, logger)
-          yield(spider, index)
-          spider.finalize
-        }
-
-        spider_threads << spider_thread
-        puts "[*] Created new thread #{spider_thread}\n"
-      }
-
-      spider_threads.each(&:join)
-
-      ThreadsWait.all_waits(*spider_threads) do |thread|
-        puts "[*] Thread #{thread} done\n"
-      end
-
-      logger.write_file
-    end
-
-    def clean_up_following_images_file(json_file)
-      profile = Spiders::Instagram::Profile.new(file_name: json_file)
     end
   end
 end
