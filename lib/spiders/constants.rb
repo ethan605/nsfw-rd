@@ -1,2 +1,4 @@
-module Spiders::Constants
+module Spiders
+  module Constants
+  end
 end

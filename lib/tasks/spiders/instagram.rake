@@ -69,13 +69,14 @@ namespace :spiders do
       spider_threads.each(&:join)
 
       ThreadsWait.all_waits(*spider_threads) do |thread|
-        puts "Thread #{thread} done\n"
+        puts "[*] Thread #{thread} done\n"
       end
 
       logger.write_file
     end
 
     def clean_up_following_images_file(json_file)
+      profile = Spiders::Instagram::Profile.new(file_name: json_file)
     end
   end
 end
