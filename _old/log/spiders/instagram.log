@@ -1,0 +1,653 @@
+
+
+==========
+Timestamp: 2016-03-18 12:36:24 +0700
+
+[0x007fc37e951fc0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+==========
+
+==========
+Timestamp: 2016-03-18 13:51:43 +0700
+
+[0x007fe2f913f298]
+	Grabbing news feed articles
+	Grabbed 12 articles
+
+==========
+
+==========
+Timestamp: 2016-03-18 13:52:54 +0700
+
+[0x007ff334063158]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+[0x007ff33402ac18]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+==========
+
+==========
+Timestamp: 2016-03-18 14:13:48 +0700
+
+[0x007f8d74bd1ab0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+[0x007f8d74bd0b38]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+==========
+
+==========
+Start at: 2016-03-18 14:15:22 +0700
+
+[0x007fec400b8108]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+[0x007fec400b84f0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+End at: 2016-03-18 14:15:45 +0700
+==========
+
+==========
+Start at: 2016-03-18 14:16:30 +0700
+
+[0x007fdcdcbc8318]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+[0x007fdcdcbc3ca0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles
+
+End at: 2016-03-18 14:17:02 +0700 (32.282287s)
+==========
+
+==========
+Start at: 2016-03-18 14:18:38 +0700
+
+[0x007ff3b850ad80]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [4366.61ms]
+
+[0x007ff3b850b0c8]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [2082.19ms]
+
+End at: 2016-03-18 14:19:02 +0700 (23.642265s)
+==========
+
+==========
+Start at: 2016-03-18 14:25:17 +0700
+
+[0x007fb52380c5e8]
+	Nothing new with cambria_joy, move on!
+
+[0x007fb523814860]
+	Nothing new with amodio.p, move on!
+
+[0x007fb52380e7f8]
+	Grabbing 37 images for annacrygirl
+	[32%] [annacrygirl] Grabbed 12 images
+	[64%] [annacrygirl] Grabbed 24 images [2626.65ms]
+	[97%] [annacrygirl] Grabbed 36 images [2858.42ms]
+	[100%] [annacrygirl] Grabbed 37 images [2620.18ms]
+
+End at: 2016-03-18 14:25:56 +0700 (38.486981s)
+==========
+
+==========
+Start at: 2016-03-18 14:35:19 +0700
+
+[0x007fe43384ebe8]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3854.47ms]
+
+[0x007fe43383eba8]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3901.07ms]
+
+[0x007fe43384d518]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 24 articles [911.04ms]
+	Grabbed 36 articles [3736.65ms]
+
+End at: 2016-03-18 14:35:49 +0700 (30.290763s)
+==========
+
+==========
+Start at: 2016-03-18 14:36:16 +0700
+
+[0x007fe7f402d2b0]
+	Nothing new with amodio.p, move on!
+
+[0x007fe7f40274a0]
+	Nothing new with annacrygirl, move on!
+
+[0x007fe7f4025c90]
+	Nothing new with cambria_joy, move on!
+
+End at: 2016-03-18 14:36:35 +0700 (19.038861s)
+==========
+
+==========
+Start at: 2016-03-18 21:32:55 +0700
+
+[0x007fb772056f50]
+	Grabbing 155 images for amodio.p
+	[07%] [amodio.p] Grabbed 12 images
+	Nothing new with amodio.p, move on!
+
+[0x007fb772054660]
+	Grabbing 273 images for cambria_joy
+	[04%] [cambria_joy] Grabbed 12 images
+	Nothing new with cambria_joy, move on!
+
+[0x007fb772067328]
+	Grabbing 40 images for annacrygirl
+	[30%] [annacrygirl] Grabbed 12 images
+	[60%] [annacrygirl] Grabbed 24 images [2947.75ms]
+	Nothing new with annacrygirl, move on!
+
+End at: 2016-03-18 21:33:22 +0700 (26.842418s)
+==========
+
+==========
+Start at: 2016-03-18 21:33:38 +0700
+
+[0x007fdc70856840]
+	Grabbing 40 images for annacrygirl
+	[30%] [annacrygirl] Grabbed 12 images
+	Nothing new with annacrygirl, move on!
+
+[0x007fdc70854b80]
+	Grabbing 155 images for amodio.p
+	[07%] [amodio.p] Grabbed 12 images
+	Nothing new with amodio.p, move on!
+
+[0x007fdc70847d40]
+	Grabbing 273 images for cambria_joy
+	[04%] [cambria_joy] Grabbed 12 images
+	Nothing new with cambria_joy, move on!
+
+End at: 2016-03-18 21:34:04 +0700 (26.031468s)
+==========
+
+==========
+Start at: 2016-03-18 21:34:22 +0700
+
+[0x007fabcb04d250]
+	Grabbing 40 images for annacrygirl
+	[30%] [annacrygirl] Grabbed 12 images
+	Nothing new with annacrygirl, move on!
+
+[0x007fabcb03c720]
+	Grabbing 273 images for cambria_joy
+	[04%] [cambria_joy] Grabbed 12 images
+	Nothing new with cambria_joy, move on!
+
+[0x007fabcb054348]
+	Grabbing 155 images for amodio.p
+	[07%] [amodio.p] Grabbed 12 images
+	Nothing new with amodio.p, move on!
+
+End at: 2016-03-18 21:34:59 +0700 (37.229828s)
+==========
+
+==========
+Start at: 2016-03-19 10:00:03 +0700
+
+[0x007ff926099f08]
+	Grabbing 5624 images for 5mpixels
+	[00%] [5mpixels] Grabbed 12 images
+	[00%] [5mpixels] Grabbed 24 images [2558.85ms]
+	[00%] [5mpixels] Grabbed 36 images [2378.26ms]
+	[00%] [5mpixels] Grabbed 48 images [2859.67ms]
+	Nothing new with 5mpixels, move on!
+
+[0x007ff9260993c8]
+	Grabbing 3672 images for _bizomp__omg
+	[00%] [_bizomp__omg] Grabbed 12 images
+	[00%] [_bizomp__omg] Grabbed 24 images [3085.21ms]
+	[00%] [_bizomp__omg] Grabbed 36 images [2952.95ms]
+	[01%] [_bizomp__omg] Grabbed 48 images [2536.87ms]
+	[01%] [_bizomp__omg] Grabbed 60 images [3007.97ms]
+	[01%] [_bizomp__omg] Grabbed 72 images [2722.45ms]
+	[02%] [_bizomp__omg] Grabbed 84 images [2961.05ms]
+	[02%] [_bizomp__omg] Grabbed 96 images [1845.40ms]
+	[02%] [_bizomp__omg] Grabbed 108 images [2453.94ms]
+	[03%] [_bizomp__omg] Grabbed 120 images [4028.98ms]
+	[03%] [_bizomp__omg] Grabbed 132 images [2755.56ms]
+	[03%] [_bizomp__omg] Grabbed 144 images [2282.82ms]
+	[04%] [_bizomp__omg] Grabbed 156 images [3003.87ms]
+	[04%] [_bizomp__omg] Grabbed 168 images [2060.13ms]
+	[04%] [_bizomp__omg] Grabbed 180 images [2652.17ms]
+	[05%] [_bizomp__omg] Grabbed 192 images [1859.02ms]
+	[05%] [_bizomp__omg] Grabbed 204 images [2965.56ms]
+	[05%] [_bizomp__omg] Grabbed 216 images [2660.82ms]
+	[06%] [_bizomp__omg] Grabbed 228 images [3012.42ms]
+	[06%] [_bizomp__omg] Grabbed 240 images [2278.28ms]
+	[06%] [_bizomp__omg] Grabbed 252 images [2333.24ms]
+	[07%] [_bizomp__omg] Grabbed 264 images [3138.22ms]
+	[07%] [_bizomp__omg] Grabbed 276 images [3299.19ms]
+	[07%] [_bizomp__omg] Grabbed 288 images [1714.97ms]
+	[08%] [_bizomp__omg] Grabbed 300 images [2238.82ms]
+	[08%] [_bizomp__omg] Grabbed 312 images [2451.31ms]
+	[08%] [_bizomp__omg] Grabbed 324 images [2418.54ms]
+	Nothing new with _bizomp__omg, move on!
+
+[0x007ff926099968]
+	Grabbing 46 images for 7wonder_woman
+	[26%] [7wonder_woman] Grabbed 12 images
+	Nothing new with 7wonder_woman, move on!
+
+End at: 2016-03-19 10:01:38 +0700 (95.425279s)
+==========
+
+==========
+Start at: 2016-03-19 14:58:08 +0700
+
+[0x007fb392027f68]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3551.38ms]
+
+[0x007fb392025b78]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3908.42ms]
+
+[0x007fb39202e520]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3046.14ms]
+
+End at: 2016-03-19 14:58:35 +0700 (26.684022s)
+==========
+
+==========
+Start at: 2016-03-19 15:01:50 +0700
+
+[0x007f89e6d253d0]
+	Grabbing 46 images for 7wonder_woman
+	[26%] [7wonder_woman] Grabbed 12 images
+	Nothing new with 7wonder_woman, move on!
+
+[0x007f89e6d25f10]
+	Grabbing 5626 images for 5mpixels
+	[ 0%] [5mpixels] Grabbed 12 images
+	Nothing new with 5mpixels, move on!
+
+[0x007f89e6d24e80]
+	Grabbing 90 images for __ladymillion___
+	[13%] [__ladymillion___] Grabbed 12 images
+	[26%] [__ladymillion___] Grabbed 24 images [1800.14ms]
+	[40%] [__ladymillion___] Grabbed 36 images [2819.55ms]
+	[53%] [__ladymillion___] Grabbed 48 images [2135.29ms]
+	[66%] [__ladymillion___] Grabbed 60 images [1855.31ms]
+	[80%] [__ladymillion___] Grabbed 72 images [2826.13ms]
+	[93%] [__ladymillion___] Grabbed 84 images [2009.89ms]
+	[100%] [__ladymillion___] Grabbed 90 images [1543.98ms]
+
+End at: 2016-03-19 15:02:25 +0700 (34.994355s)
+==========
+
+==========
+Start at: 2016-03-19 15:17:23 +0700
+
+[0x007f7fc3b79478]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3985.08ms]
+
+[0x007f7fc3b790e0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3566.37ms]
+
+End at: 2016-03-19 15:17:51 +0700 (28.168604s)
+==========
+
+==========
+Start at: 2016-03-19 15:21:51 +0700
+
+[0x007fb5bdc0ae70]
+	Grabbing 282 images for abramovich77_
+	[ 4%] [abramovich77_] Grabbed 12 images
+	[ 8%] [abramovich77_] Grabbed 24 images [2133.57ms]
+	[12%] [abramovich77_] Grabbed 36 images [2065.29ms]
+	[17%] [abramovich77_] Grabbed 48 images [3101.12ms]
+	[21%] [abramovich77_] Grabbed 60 images [2606.62ms]
+	[25%] [abramovich77_] Grabbed 72 images [2303.76ms]
+	[29%] [abramovich77_] Grabbed 84 images [2647.41ms]
+	[34%] [abramovich77_] Grabbed 96 images [3553.51ms]
+	[38%] [abramovich77_] Grabbed 108 images [1825.75ms]
+	[42%] [abramovich77_] Grabbed 120 images [2301.55ms]
+	[46%] [abramovich77_] Grabbed 132 images [2596.24ms]
+	[51%] [abramovich77_] Grabbed 144 images [2236.20ms]
+	[55%] [abramovich77_] Grabbed 156 images [3014.42ms]
+	[59%] [abramovich77_] Grabbed 168 images [2039.85ms]
+	[63%] [abramovich77_] Grabbed 180 images [2063.17ms]
+	[68%] [abramovich77_] Grabbed 192 images [2354.29ms]
+	[72%] [abramovich77_] Grabbed 204 images [2076.66ms]
+	[76%] [abramovich77_] Grabbed 216 images [2584.87ms]
+	[80%] [abramovich77_] Grabbed 228 images [2547.25ms]
+	[85%] [abramovich77_] Grabbed 240 images [2313.64ms]
+	[89%] [abramovich77_] Grabbed 252 images [2611.35ms]
+	[93%] [abramovich77_] Grabbed 264 images [2589.26ms]
+	[97%] [abramovich77_] Grabbed 276 images [2372.75ms]
+	[100%] [abramovich77_] Grabbed 282 images [2234.10ms]
+
+[0x007fb5bdc095c0]
+	Grabbing 155 images for amodio.p
+	[ 7%] [amodio.p] Grabbed 12 images
+	Nothing new with amodio.p, move on!
+
+[0x007fb5bdc0b730]
+	Grabbing 54 images for _lalavalerie_
+	[22%] [_lalavalerie_] Grabbed 12 images
+	[44%] [_lalavalerie_] Grabbed 24 images [3684.56ms]
+	[66%] [_lalavalerie_] Grabbed 36 images [3436.67ms]
+	[88%] [_lalavalerie_] Grabbed 48 images [3913.27ms]
+	[100%] [_lalavalerie_] Grabbed 54 images [2332.09ms]
+
+End at: 2016-03-19 15:23:08 +0700 (76.893084s)
+==========
+
+==========
+Start at: 2016-03-19 15:39:19 +0700
+
+[0x007fc29023e510]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [2937.70ms]
+
+[0x007fc29023e880]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [1956.55ms]
+
+End at: 2016-03-19 15:39:43 +0700 (24.626241s)
+==========
+
+==========
+Start at: 2016-03-19 15:40:05 +0700
+
+[0x007ff22a06c0d8]
+	Grabbing 282 images for abramovich77_
+	[ 4%] [abramovich77_] Grabbed 12 images
+	Nothing new with abramovich77_, move on!
+
+[0x007ff22a05df60]
+	Grabbing 55 images for _lalavalerie_
+	[21%] [_lalavalerie_] Grabbed 12 images
+	Nothing new with _lalavalerie_, move on!
+
+End at: 2016-03-19 15:40:22 +0700 (17.795484s)
+==========
+
+==========
+Start at: 2016-03-19 15:59:38 +0700
+
+End at: 2016-03-19 16:00:04 +0700 (25.914955s)
+==========
+
+==========
+Start at: 2016-03-19 15:59:38 +0700
+
+End at: 2016-03-19 16:00:04 +0700 (25.920987s)
+==========
+
+==========
+Start at: 2016-03-19 16:01:24 +0700
+
+End at: 2016-03-19 16:01:49 +0700 (25.05612s)
+==========
+
+==========
+Start at: 2016-03-19 16:01:24 +0700
+
+End at: 2016-03-19 16:01:49 +0700 (25.062126s)
+==========
+
+==========
+Start at: 2016-03-19 16:02:18 +0700
+
+End at: 2016-03-19 16:02:37 +0700 (18.685535s)
+==========
+
+==========
+Start at: 2016-03-19 16:02:48 +0700
+
+End at: 2016-03-19 16:03:04 +0700 (15.488635s)
+==========
+
+==========
+Start at: 2016-03-19 16:03:04 +0700
+
+End at: 2016-03-19 16:06:18 +0700 (193.954721s)
+==========
+
+==========
+Start at: 2016-03-19 16:02:48 +0700
+
+End at: 2016-03-19 16:06:18 +0700 (209.446212s)
+==========
+
+==========
+Start at: 2016-03-19 16:07:08 +0700
+
+End at: 2016-03-19 16:07:32 +0700 (24.545864s)
+==========
+
+==========
+Start at: 2016-03-19 16:07:32 +0700
+
+End at: 2016-03-19 16:07:42 +0700 (10.083092s)
+==========
+
+==========
+Start at: 2016-03-19 16:07:08 +0700
+
+End at: 2016-03-19 16:07:42 +0700 (34.631716s)
+==========
+
+==========
+Start at: 2016-03-19 16:10:51 +0700
+
+End at: 2016-03-19 16:11:13 +0700 (21.705409s)
+==========
+
+==========
+Start at: 2016-03-19 16:14:51 +0700
+
+End at: 2016-03-19 16:15:01 +0700 (9.666692s)
+==========
+
+==========
+Start at: 2016-03-19 16:14:51 +0700
+
+End at: 2016-03-19 16:15:06 +0700 (15.17914s)
+==========
+
+==========
+Start at: 2016-03-19 16:14:51 +0700
+
+End at: 2016-03-19 16:15:06 +0700 (15.180146s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:03 +0700
+
+End at: 2016-03-19 16:16:19 +0700 (16.255132s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:19 +0700
+
+End at: 2016-03-19 16:16:29 +0700 (9.264439s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:03 +0700
+
+End at: 2016-03-19 16:16:37 +0700 (33.404205s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:03 +0700
+
+End at: 2016-03-19 16:18:53 +0700 (169.812001s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:37 +0700
+
+End at: 2016-03-19 16:19:09 +0700 (152.131722s)
+==========
+
+==========
+Start at: 2016-03-19 16:18:53 +0700
+
+End at: 2016-03-19 16:20:35 +0700 (101.530801s)
+==========
+
+==========
+Start at: 2016-03-19 16:16:03 +0700
+
+End at: 2016-03-19 16:20:35 +0700 (271.346265s)
+==========
+
+==========
+Start at: 2016-03-19 18:22:03 +0700
+
+End at: 2016-03-19 18:22:27 +0700 (24.119778s)
+==========
+
+==========
+Start at: 2016-03-19 18:22:43 +0700
+
+End at: 2016-03-19 18:23:02 +0700 (18.75392s)
+==========
+
+==========
+Start at: 2016-03-19 18:23:02 +0700
+
+End at: 2016-03-19 18:23:15 +0700 (13.324129s)
+==========
+
+==========
+Start at: 2016-03-19 18:22:43 +0700
+
+End at: 2016-03-19 18:23:21 +0700 (38.471948s)
+==========
+
+==========
+Start at: 2016-03-19 18:22:43 +0700
+
+End at: 2016-03-19 18:25:54 +0700 (190.839793s)
+==========
+
+==========
+Start at: 2016-03-19 18:23:21 +0700
+
+End at: 2016-03-19 18:26:18 +0700 (176.18677s)
+==========
+
+==========
+Start at: 2016-03-19 18:25:54 +0700
+
+End at: 2016-03-19 18:27:42 +0700 (107.796419s)
+==========
+
+==========
+Start at: 2016-03-19 18:22:43 +0700
+
+End at: 2016-03-19 18:27:42 +0700 (298.644704s)
+==========
+
+==========
+Start at: 2016-03-22 18:59:00 +0700
+
+[0x007fcdb402ea48]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [4092.39ms]
+	Grabbed 48 articles [6914.06ms]
+	Grabbed 60 articles [10816.07ms]
+	Grabbed 72 articles [15612.07ms]
+	Grabbed 84 articles [20037.63ms]
+	Grabbed 96 articles [24880.09ms]
+	Grabbed 108 articles [29491.75ms]
+
+[0x007fcdb4005ee0]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [3119.96ms]
+	Grabbed 48 articles [6517.45ms]
+	Grabbed 60 articles [10645.63ms]
+	Grabbed 72 articles [14758.64ms]
+	Grabbed 84 articles [19058.75ms]
+	Grabbed 96 articles [24183.47ms]
+	Grabbed 108 articles [28957.72ms]
+
+[0x007fcdb4007650]
+	Grabbing news feed articles
+	Grabbed 12 articles
+	Grabbed 36 articles [4758.61ms]
+	Grabbed 48 articles [8440.98ms]
+	Grabbed 60 articles [11814.08ms]
+	Grabbed 72 articles [16240.49ms]
+	Grabbed 84 articles [21018.99ms]
+	Grabbed 96 articles [25739.24ms]
+	Grabbed 108 articles [33487.19ms]
+
+End at: 2016-03-22 19:00:10 +0700 (69.988725s)
+==========
+
+==========
+Start at: 2016-03-22 19:00:10 +0700
+
+[0x007fcdb3e93648]
+	Grabbing 5673 images for 5mpixels
+	[ 0%] [5mpixels] Grabbed 12 images
+	[ 0%] [5mpixels] Grabbed 24 images [1797.97ms]
+	[ 0%] [5mpixels] Grabbed 36 images [2104.67ms]
+	[ 0%] [5mpixels] Grabbed 48 images [4492.88ms]
+	[ 1%] [5mpixels] Grabbed 60 images [2486.73ms]
+	[ 1%] [5mpixels] Grabbed 72 images [2013.83ms]
+	[ 1%] [5mpixels] Grabbed 84 images [3023.71ms]
+	Nothing new with 5mpixels, move on!
+
+[0x007fcdb3e93af8]
+	Grabbing 40 images for 1nstagram__modelsss
+	[30%] [1nstagram__modelsss] Grabbed 12 images
+	[60%] [1nstagram__modelsss] Grabbed 24 images [2730.75ms]
+	[90%] [1nstagram__modelsss] Grabbed 36 images [3093.94ms]
+	[100%] [1nstagram__modelsss] Grabbed 40 images [1677.07ms]
+
+End at: 2016-03-22 19:00:45 +0700 (35.232829s)
+==========

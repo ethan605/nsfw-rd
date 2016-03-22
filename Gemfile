@@ -9,8 +9,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+# Postgresql
+gem 'pg', '~> 0.18.4'
+
 # For debugging
-# gem 'irbtools', '~> 2.0', '>= 2.0.1'
 gem 'pry', '~> 0.10.3'
 gem 'pry-rails', '~> 0.3.4'
 
@@ -18,7 +20,6 @@ gem 'pry-rails', '~> 0.3.4'
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
 gem 'watir', '~> 5.0'
 gem 'watir-scroll', '~> 0.1.0'
-# gem 'net-http-batch', :git => 'git@github.com:raggi/net-http-batch.git'
 
 group :development, :test do
   gem 'minitest', '~> 5.8', '>= 5.8.4'
