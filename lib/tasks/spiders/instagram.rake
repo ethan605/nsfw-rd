@@ -5,12 +5,14 @@ namespace :spiders do
     end
 
     task :process_all => :environment do
-      ENV["limit"] = "13"
-      ENV["concurrent"] = "1"
+      ENV["limit"] = "100"
+      ENV["concurrent"] = "3"
       Rake::Task['spiders:instagram:grab_followings'].invoke
 
       ENV["limit"] = "2"
       ENV["concurrent"] = "2"
+
+      Rake::Task['spiders:instagram:grab_followings'].invoke
       Rake::Task['spiders:instagram:grab_followings_all_images'].invoke
     end
 
