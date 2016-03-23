@@ -12,7 +12,7 @@ describe Content::Profile do
     profile.weighted_score.must_equal 0
   end
 
-  it "must be unique screen_name" do
+  it "must have unique screen_name" do
     profile.screen_name = "_lalavalerie_"
     profile.must_be :invalid?
 
@@ -20,31 +20,27 @@ describe Content::Profile do
     profile.must_be :valid?
   end
 
-  it "must be numerical scores" do
+  it "must have numerical scores" do
     profile.screen_name = "test_screen_name"
 
-    profile.raw_average_score = "non-numerical"
-    profile.must_be :invalid?
+    {
+      :invalid? => ["non-numerical"],
+      :valid? => [-1, 0, 128.88]
+    }.each {|state, scores|
+      scores.each {|score|
+        profile.raw_average_score = score
+        profile.must_be state
+      }
+    }
 
-    profile.raw_average_score = -1
-    profile.must_be :valid?
-
-    profile.raw_average_score = 0
-    profile.must_be :valid?
-
-    profile.raw_average_score = 128.88
-    profile.must_be :valid?
-
-    profile.weighted_score = "non-numerical"
-    profile.must_be :invalid?
-
-    profile.weighted_score = -1
-    profile.must_be :valid?
-
-    profile.weighted_score = 0
-    profile.must_be :valid?
-
-    profile.weighted_score = 128.88
-    profile.must_be :valid?
+    {
+      :invalid? => ["non-numerical"],
+      :valid? => [-1, 0, 128.88]
+    }.each {|state, scores|
+      scores.each {|score|
+        profile.weighted_score = score
+        profile.must_be state
+      }
+    }
   end
 end
