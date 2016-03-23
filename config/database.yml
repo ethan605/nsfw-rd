@@ -83,3 +83,6 @@ production:
   database: nsfw-rd_prod
   username: nsfw-rd
   password: <%= ENV['NSFW-RD_DATABASE_PASSWORD'] %>
+
+# Troubleshooting
+# http://stackoverflow.com/questions/28248737/starting-postgres-server-on-mac
