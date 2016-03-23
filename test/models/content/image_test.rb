@@ -1,13 +1,6 @@
 require "test_helper"
 
 describe Content::Image do
-  # before do
-  #   profiles = Content::Profile.all
-  #   Content::Image.all.each_slice(4).each_with_index {|images, index|
-  #     images.each {|image| image.update_attribute(:profile_id, profiles[index].id)}
-  #   }
-  # end
-
   let(:image) { Content::Image.new }
 
   it "must be invalid by default" do

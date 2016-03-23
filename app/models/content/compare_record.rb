@@ -1,6 +1,6 @@
 class Content::CompareRecord < ActiveRecord::Base
-  belongs_to :first_image, class_name: "Content::Image"
-  belongs_to :second_image, class_name: "Content::Image"
+  belongs_to :first_image, class_name: "Content::Image", foreign_key: "first_image_id"
+  belongs_to :second_image, class_name: "Content::Image", foreign_key: "second_image_id"
 
   validates_presence_of :first_image, :second_image
   validates_inclusion_of :compare_result, :in => [-1, 1]
