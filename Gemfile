@@ -12,6 +12,9 @@ gem 'jbuilder', '~> 2.0'
 # Postgresql
 gem 'pg', '~> 0.18.4'
 
+# Tests
+gem 'minitest-rails', '~> 2.2'
+
 # For debugging
 gem 'pry', '~> 0.10.3'
 gem 'pry-rails', '~> 0.3.4'
