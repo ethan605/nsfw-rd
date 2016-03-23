@@ -41,10 +41,4 @@ ActiveRecord::Schema.define(version: 20160323111111) do
     t.datetime "updated_at",                      null: false
   end
 
-  create_table "content_tests", force: :cascade do |t|
-    t.decimal  "test_num"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end
