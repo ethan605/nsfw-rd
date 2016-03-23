@@ -59,5 +59,20 @@ module Spiders
 
       logger.write_file
     end
+
+    def self.generate_random_yml_timestamp(count = 10)
+      end_time = Time.now
+      start_time = end_time - 10.days
+
+      min_delay = 100
+      max_delay = 500
+
+      count.times.map {
+        created_at = rand(start_time..end_time)
+        updated_at = created_at + rand(min_delay..max_delay)
+        
+        ["created_at: #{created_at}", "updated_at: #{updated_at}"].join("\n")
+      }.join("\n\n")
+    end
   end
 end
