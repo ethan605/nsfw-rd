@@ -1,26 +1,30 @@
 ladymillion:
-  screen_name: "__ladymillion___"
+  id: 1
+  screen_name: __ladymillion___
   raw_average_score: 0.8
   weighted_score: 0.2
   created_at: 2016-03-15 04:16:49 +0700
   updated_at: 2016-03-15 04:17:33 +0700
 
 lalavalerie:
-  screen_name: "_lalavalerie_"
+  id: 2
+  screen_name: _lalavalerie_
   raw_average_score: 0.6
   weighted_score: 0.7
   created_at: 2016-03-17 07:26:03 +0700
   updated_at: 2016-03-17 07:27:12 +0700
 
 yourprincess94:
-  screen_name: "_yourprincess94_"
+  id: 3
+  screen_name: _yourprincess94_
   raw_average_score: -1.5
   weighted_score: -0.8
   created_at: 2016-03-19 05:34:07 +0700
   updated_at: 2016-03-19 05:35:20 +0700
 
 abramovich77:
-  screen_name: "abramovich77_"
+  id: 4
+  screen_name: abramovich77_
   raw_average_score: 0
   weighted_score: 0
   created_at: 2016-03-17 18:09:03 +0700

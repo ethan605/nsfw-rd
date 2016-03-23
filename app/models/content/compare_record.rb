@@ -1,11 +1,8 @@
 class Content::CompareRecord < ActiveRecord::Base
-  attr_accessor :compare_result
+  belongs_to :first_image, class_name: "Content::Image"
+  belongs_to :second_image, class_name: "Content::Image"
 
-  has_one :first_image, class_name: "Content::Image"
-  has_one :second_image, class_name: "Content::Image"
-
-  # validates_associated :first_image, :second_image
-  
+  validates_presence_of :first_image, :second_image
   validates_inclusion_of :compare_result, :in => [-1, 1]
   validate :images_must_be_different
 
