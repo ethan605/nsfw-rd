@@ -9,11 +9,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-# Postgresql
+# For database
 gem 'pg', '~> 0.18.4'
 gem 'squeel', '~> 1.2', '>= 1.2.3'
 
-# Tests
+# For tests
 gem 'minitest-rails', '~> 2.2'
 
 # For debugging
