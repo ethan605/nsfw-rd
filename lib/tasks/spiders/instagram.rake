@@ -5,11 +5,11 @@ namespace :spiders do
     end
 
     task :process_all => :environment do
-      ENV["limit"] = Spiders::Instagram::Constants.DEFAULT_GRAB_LIMIT.to_s
+      ENV["limit"] = Spiders::Instagram::Constants::DEFAULT_GRAB_LIMIT.to_s
       ENV["concurrent"] = Spiders::Instagram::Constants::DEFAULT_CONCURRENT_SPIDERS.to_s
-      Rake::Task['spiders:instagram:grab_followings'].invoke
+      # Rake::Task['spiders:instagram:grab_followings'].invoke
       Rake::Task['spiders:instagram:grab_followings_all_images'].invoke
-      Rake::Task['spiders:instagram:clean_up_all_followings_images'].invoke
+      # Rake::Task['spiders:instagram:clean_up_all_followings_images'].invoke
     end
 
     task :test_all => :environment do

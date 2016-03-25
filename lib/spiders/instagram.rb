@@ -38,8 +38,6 @@ module Spiders
       articles_count = @browser.articles.count
       echo_output("Grabbed #{articles_count} articles", 1)
 
-      @browser.a(text: "Load more").click
-
       start_time = Time.now
 
       while articles_count < max_articles
